@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GC Used Gear</string>
+    <string name="action_settings">Refresh</string>
+    <string name="title_activity_rss_list">GC Used Gear</string>
+    <string name="usedGearCategory">Select Used Gear Category</string>
+    <string name="guitar">Guitar</string>
+    <string name="bass">Bass</string>
+    <string name="drums">Drums</string>
+    <string name="live">Live Sound</string>
+    <string name="amps">Amps</string>
+    <string name="keys">Keyboards</string>
+    <string name="rec">Recording</string>
+    <string name="dj">DJ</string>
+    <string name="acc">Accessories</string>
+    <string name="wind">Wind Instruments</string>
+    <string name="strings">Strings</string>
+    <string name="title_activity_list">Used Gear List</string>
+
+</resources>

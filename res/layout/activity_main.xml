@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/RelativeLayoutMain"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+    
+    <LinearLayout
+        android:id="@+id/mainLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView
+        android:id="@+id/usedGearText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/usedGearCategory"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/Green" />
+    
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/guitar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/guitar"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte" 
+                />
+
+            <Button
+                android:id="@+id/bass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/bass"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/drums"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/drums"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/LiveSound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/live"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/Amps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/amps"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/Keyboards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/keys"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/Recording"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/rec"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/DJ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/dj"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/accessories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/acc"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/Wind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/wind"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            <Button
+                android:id="@+id/Strings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/strings"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte"  />
+
+            
+
+        </LinearLayout>
+
+    </ScrollView>
+    
+    </LinearLayout>
+
+</RelativeLayout>
