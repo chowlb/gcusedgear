@@ -16,12 +16,13 @@
         android:orientation="vertical">
         
         <TextView
-        android:id="@+id/usedGearText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/usedGearCategory"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/Green" />
+            android:id="@+id/usedGearText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/usedGearCategory"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Red" />
     
     <ScrollView
         android:id="@+id/scrollView1"

@@ -17,5 +17,6 @@
     <string name="wind">Wind Instruments</string>
     <string name="strings">Strings</string>
     <string name="title_activity_list">Used Gear List</string>
+    <string name="search">Filter Listings&#8230;</string>
 
 </resources>

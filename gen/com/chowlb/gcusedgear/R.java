@@ -166,6 +166,7 @@ containing a value of this type.
     public static final class color {
         public static final int DarkGrey=0x7f04000b;
         public static final int Green=0x7f04000a;
+        public static final int Red=0x7f04000d;
         public static final int White=0x7f04000c;
         public static final int common_action_bar_splitter=0x7f040009;
         /**  Sign-in Button Colors 
@@ -179,8 +180,8 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f04000d;
-        public static final int common_signin_btn_text_light=0x7f04000e;
+        public static final int common_signin_btn_text_dark=0x7f04000e;
+        public static final int common_signin_btn_text_light=0x7f04000f;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -242,8 +243,8 @@ containing a value of this type.
         public static final int gcListView=0x7f050017;
         public static final int guitar=0x7f050009;
         public static final int hybrid=0x7f050004;
+        public static final int inputSearch=0x7f050016;
         public static final int listLinearLayout=0x7f050015;
-        public static final int listViewText=0x7f050016;
         public static final int mainLinearLayout=0x7f050006;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
@@ -371,6 +372,7 @@ containing a value of this type.
         public static final int keys=0x7f060023;
         public static final int live=0x7f060021;
         public static final int rec=0x7f060024;
+        public static final int search=0x7f06002a;
         public static final int strings=0x7f060028;
         public static final int title_activity_list=0x7f060029;
         public static final int title_activity_rss_list=0x7f06001c;

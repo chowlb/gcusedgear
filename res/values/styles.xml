@@ -35,5 +35,6 @@
     <color name="Green">#009933</color>
     <color name="DarkGrey">#666666</color>
     <color name="White">#ffffff</color>
+    <color name="Red">#FF0000</color>
 
 </resources>

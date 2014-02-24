@@ -17,6 +17,7 @@ int attr useViewLifecycle 0x7f01000f
 int attr zOrderOnTop 0x7f010010
 int color DarkGrey 0x7f04000b
 int color Green 0x7f04000a
+int color Red 0x7f04000d
 int color White 0x7f04000c
 int color common_action_bar_splitter 0x7f040009
 int color common_signin_btn_dark_text_default 0x7f040000
@@ -28,8 +29,8 @@ int color common_signin_btn_light_text_default 0x7f040004
 int color common_signin_btn_light_text_disabled 0x7f040006
 int color common_signin_btn_light_text_focused 0x7f040007
 int color common_signin_btn_light_text_pressed 0x7f040005
-int color common_signin_btn_text_dark 0x7f04000d
-int color common_signin_btn_text_light 0x7f04000e
+int color common_signin_btn_text_dark 0x7f04000e
+int color common_signin_btn_text_light 0x7f04000f
 int dimen activity_horizontal_margin 0x7f080000
 int dimen activity_vertical_margin 0x7f080001
 int drawable btn_red_matte 0x7f020000
@@ -79,8 +80,8 @@ int id drums 0x7f05000b
 int id gcListView 0x7f050017
 int id guitar 0x7f050009
 int id hybrid 0x7f050004
+int id inputSearch 0x7f050016
 int id listLinearLayout 0x7f050015
-int id listViewText 0x7f050016
 int id mainLinearLayout 0x7f050006
 int id none 0x7f050000
 int id normal 0x7f050001
@@ -132,6 +133,7 @@ int string guitar 0x7f06001e
 int string keys 0x7f060023
 int string live 0x7f060021
 int string rec 0x7f060024
+int string search 0x7f06002a
 int string strings 0x7f060028
 int string title_activity_list 0x7f060029
 int string title_activity_rss_list 0x7f06001c
