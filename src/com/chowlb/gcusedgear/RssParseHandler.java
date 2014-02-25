@@ -14,8 +14,10 @@ public class RssParseHandler extends DefaultHandler{
 	private RssItem currentItem;
 	private boolean parsingDescription;
 	private boolean parsingLink;
+	private boolean parsingImage;
 	private StringBuffer descriptionSB;
 	private StringBuffer linkSB;
+	private StringBuffer imageSB;
 	
 	public RssParseHandler() {
 		rssItems = new ArrayList();
@@ -39,6 +41,9 @@ public class RssParseHandler extends DefaultHandler{
 			}else if("link".equals(qName)) {
 				parsingLink = true;
 				linkSB = new StringBuffer();
+			}else if("guid".equals(qName)) {
+				parsingImage = true;
+				imageSB = new StringBuffer();
 			}
 		}
 	
@@ -59,6 +64,11 @@ public class RssParseHandler extends DefaultHandler{
 				//Log.e("chowlb", "Parsing link");
 				linkSB.append(new String(ch, start, length));
 			}
+		}else if(parsingImage) {
+			if(currentItem != null) {
+				//Log.e("chowlb", "Parsing link");
+				imageSB.append(new String(ch, start, length));
+			}
 		}
 	}
 
@@ -78,6 +88,11 @@ public class RssParseHandler extends DefaultHandler{
 			parsingLink = false;
 			if(currentItem!=null) {
 				currentItem.setLink(linkSB.toString());
+			}
+		}else if("guid".equals(qName)) {
+			parsingImage = false;
+			if(currentItem!=null) {
+				currentItem.setImage(imageSB.toString());
 			}
 		}
 	}

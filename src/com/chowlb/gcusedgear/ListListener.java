@@ -23,9 +23,14 @@ public class ListListener implements OnItemClickListener{
 	}
 	
 	public void onItemClick(AdapterView parent, View view, int pos, long id) {
-		view.setBackgroundResource(R.color.DarkGrey);
+		
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse(listItems.get(pos).getLink()));
+		RssItem rss = (RssItem) parent.getAdapter().getItem(pos);
+		LazyAdapter la = (LazyAdapter) parent.getAdapter();
+		la.addHighlight(rss.getGuid());
+		
+		i.setData(Uri.parse(rss.getLink()));
 		activity.startActivity(i);
+		la.notifyDataSetChanged();
 	}
 }

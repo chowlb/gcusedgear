@@ -3,12 +3,14 @@ package com.chowlb.gcusedgear;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -18,17 +20,18 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
-public class ListActivity extends Activity {
+public class ListActivity extends Activity{
 
-	private ListActivity local;
+	Context local;
+	ListActivity listactivity;
 	private AdView adView;
 	EditText inputSearch;
-	ArrayAdapter<RssItem> adapter;
+	LazyAdapter adapter;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rsslist);
-		
 		adView = new AdView(this);
 		adView.setAdUnitId("ca-app-pub-8858215261311943/5955890318");
 		adView.setAdSize(AdSize.BANNER);
@@ -43,6 +46,7 @@ public class ListActivity extends Activity {
 		inputSearch = (EditText) findViewById(R.id.inputSearch);
 		
 		local = this;
+		listactivity = this;
 		
 		GetRSSDataTask task = new GetRSSDataTask();
 		
@@ -81,14 +85,14 @@ public class ListActivity extends Activity {
 		setTitle(urlType);
 		task.execute(url);
 		
-		Log.e("chowlb", Thread.currentThread().getName());
+		//Log.e("chowlb", Thread.currentThread().getName());
 		
 		inputSearch.addTextChangedListener(new TextWatcher() {
             
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-            	ListActivity.this.adapter.getFilter().filter(cs);   
+            	ListActivity.this.adapter.getFilter().filter(cs);          
             }
              
             @Override
@@ -110,7 +114,6 @@ public class ListActivity extends Activity {
 
 		@Override
 		protected List<RssItem> doInBackground(String... urls) {
-			// TODO Auto-generated method stub
 			try {
 				RssReader rssReader = new RssReader(urls[0]);
 				return rssReader.getItems();
@@ -123,18 +126,10 @@ public class ListActivity extends Activity {
 		@Override
 		protected void onPostExecute(List<RssItem> result) {
 			ListView gcItems = (ListView) findViewById(R.id.gcListView);
-			adapter = new ArrayAdapter<RssItem>(local,R.layout.custom_list_layout, result);
+			adapter = new LazyAdapter(local, result);
 			gcItems.setAdapter(adapter);
-			gcItems.setOnItemClickListener(new ListListener(result, local));
+			gcItems.setOnItemClickListener(new ListListener(result, listactivity));
 		}
 		
 	}
-
-	//@Override
-	//public boolean onCreateOptionsMenu(Menu menu) {
-	//	// Inflate the menu; this adds items to the action bar if it is present.
-	//	getMenuInflater().inflate(R.menu.list, menu);
-	//	return true;
-	//}
-
 }

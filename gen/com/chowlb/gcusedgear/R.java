@@ -220,11 +220,19 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020017;
         public static final int common_signin_btn_text_pressed_dark=0x7f020018;
         public static final int common_signin_btn_text_pressed_light=0x7f020019;
-        public static final int ic_launcher=0x7f02001a;
-        public static final int ic_plusone_medium_off_client=0x7f02001b;
-        public static final int ic_plusone_small_off_client=0x7f02001c;
-        public static final int ic_plusone_standard_off_client=0x7f02001d;
-        public static final int ic_plusone_tall_off_client=0x7f02001e;
+        public static final int gradient_bg=0x7f02001a;
+        public static final int gradient_bg_hover=0x7f02001b;
+        public static final int ic_launcher=0x7f02001c;
+        public static final int ic_plusone_medium_off_client=0x7f02001d;
+        public static final int ic_plusone_small_off_client=0x7f02001e;
+        public static final int ic_plusone_standard_off_client=0x7f02001f;
+        public static final int ic_plusone_tall_off_client=0x7f020020;
+        public static final int image_bg=0x7f020021;
+        public static final int list_selector=0x7f020022;
+        public static final int no_img_dwbl=0x7f020023;
+        public static final int no_img_hdpi=0x7f020024;
+        public static final int no_img_mdpi=0x7f020025;
+        public static final int no_img_xhdpi=0x7f020026;
     }
     public static final class id {
         public static final int Amps=0x7f05000d;
@@ -237,14 +245,16 @@ containing a value of this type.
         public static final int Strings=0x7f050013;
         public static final int Wind=0x7f050012;
         public static final int accessories=0x7f050011;
-        public static final int action_settings=0x7f050018;
+        public static final int action_settings=0x7f05001a;
         public static final int bass=0x7f05000a;
         public static final int drums=0x7f05000b;
         public static final int gcListView=0x7f050017;
         public static final int guitar=0x7f050009;
         public static final int hybrid=0x7f050004;
         public static final int inputSearch=0x7f050016;
+        public static final int itemTitle=0x7f050019;
         public static final int listLinearLayout=0x7f050015;
+        public static final int listTextView=0x7f050018;
         public static final int mainLinearLayout=0x7f050006;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
@@ -260,6 +270,7 @@ containing a value of this type.
         public static final int activity_main=0x7f030000;
         public static final int activity_rsslist=0x7f030001;
         public static final int custom_list_layout=0x7f030002;
+        public static final int list_row=0x7f030003;
     }
     public static final class menu {
         public static final int list=0x7f0a0000;
@@ -372,6 +383,7 @@ containing a value of this type.
         public static final int keys=0x7f060023;
         public static final int live=0x7f060021;
         public static final int rec=0x7f060024;
+        public static final int rowContentDescription=0x7f06002b;
         public static final int search=0x7f06002a;
         public static final int strings=0x7f060028;
         public static final int title_activity_list=0x7f060029;

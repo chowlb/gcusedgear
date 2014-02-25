@@ -1,8 +1,17 @@
 package com.chowlb.gcusedgear;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import android.graphics.Bitmap;
+import android.util.Log;
+
 public class RssItem {
 	private String description;
 	private String link;
+	private String image;
+	private int guid;
 	public String getDescription() {
 		return description;
 	}
@@ -16,8 +25,31 @@ public class RssItem {
 		this.link = "http://used.guitarcenter.com/usedGear/" + link;
 	}
 	
+	public int getGuid() {
+		return this.guid;
+	}
+	
 	public String toString() {
 		return description;
+	}
+	public Bitmap getImage() {
+		Bitmap scaled = null;
+		try{
+			URL url = new URL(this.image.toString());
+			BitmapScaler scaler = new BitmapScaler(url, 45);
+			Log.e("chowlb", "return from bitmap scaler success");
+			scaled = scaler.getScaled();
+			return scaled;
+		}catch(MalformedURLException err) {
+			Log.e("chowlb", err.getMessage());
+		}catch(IOException err) {
+			Log.e("chowlb", err.getMessage());
+		}
+		return scaled;
+	}
+	public void setImage(String image) {
+		this.guid = Integer.parseInt(image);
+		this.image = "http://used.guitarcenter.com/images/products/thmb/"+image+"_th.jpg";
 	}
 	
 }
