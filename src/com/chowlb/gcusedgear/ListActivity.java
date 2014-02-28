@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -77,22 +78,21 @@ public class ListActivity extends Activity{
 			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_54.xml";
 		}
 		
-		//TextView title = (TextView) findViewById(R.id.listViewText);
-		//title.setText("");
-		//title.setText(urlType);
-		
 		setTitle("");
 		setTitle(urlType);
 		task.execute(url);
 		
-		//Log.e("chowlb", Thread.currentThread().getName());
 		
 		inputSearch.addTextChangedListener(new TextWatcher() {
             
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-            	ListActivity.this.adapter.getFilter().filter(cs);          
+            	if(ListActivity.this.adapter != null && !ListActivity.this.adapter.isEmpty()) {
+	            	if(cs != null) {
+	            		ListActivity.this.adapter.getFilter().filter(cs);          
+	            	}	
+            	}
             }
              
             @Override
@@ -107,6 +107,7 @@ public class ListActivity extends Activity{
                 // TODO Auto-generated method stub                          
             }
         });
+		
 		
 	}
 	
@@ -125,10 +126,15 @@ public class ListActivity extends Activity{
 		
 		@Override
 		protected void onPostExecute(List<RssItem> result) {
-			ListView gcItems = (ListView) findViewById(R.id.gcListView);
-			adapter = new LazyAdapter(local, result);
-			gcItems.setAdapter(adapter);
-			gcItems.setOnItemClickListener(new ListListener(result, listactivity));
+			if(result != null && !result.isEmpty()) {
+				ListView gcItems = (ListView) findViewById(R.id.gcListView);
+				adapter = new LazyAdapter(local, result);
+				gcItems.setAdapter(adapter);
+				gcItems.setOnItemClickListener(new ListListener(result, listactivity));
+			}else {
+				
+				Toast.makeText(local, "Could not retrieve items.", Toast.LENGTH_LONG).show();
+			}
 		}
 		
 	}
