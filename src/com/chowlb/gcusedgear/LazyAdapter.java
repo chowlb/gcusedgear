@@ -1,9 +1,11 @@
 package com.chowlb.gcusedgear;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +25,14 @@ public class LazyAdapter extends BaseAdapter implements Filterable {
 	int[] imageId;
 	private static LayoutInflater inflater=null;
 	private ItemFilter mFilter = new ItemFilter();
-	
+	public ImageLoader imageLoader;
 	
 	public LazyAdapter(Context mainActivity, List<RssItem> list) {
 		result = list;
 		filteredData = list;
 		context=mainActivity;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		 imageLoader=new ImageLoader(context.getApplicationContext());
 	}
 	
 	@Override
@@ -58,18 +61,19 @@ public class LazyAdapter extends BaseAdapter implements Filterable {
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-		Holder holder = new Holder();
+		final Holder holder = new Holder();
 		View rowView;
 			rowView = inflater.inflate(R.layout.list_row, null);
 			holder.tv=(TextView) rowView.findViewById(R.id.itemTitle);
 			
-			//holder.img=(ImageView) rowView.findViewById(R.id.list_image);
+			holder.img=(ImageView) rowView.findViewById(R.id.list_image);
 			RssItem rssitem = filteredData.get(position);
+						
 			if(hlPositions.contains(rssitem.getGuid())) {
 				rowView.setBackgroundResource(R.color.DarkGrey);
 			}
 		holder.tv.setText(rssitem.getDescription().toString());
-		//holder.img.setImageBitmap(rssitem.getImage());	
+		imageLoader.DisplayImage(rssitem.getImage(), holder.img);
 		return rowView;
 	}
 	

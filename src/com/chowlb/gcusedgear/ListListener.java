@@ -5,12 +5,9 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.widget.TextView;
 
 public class ListListener implements OnItemClickListener{
 	List<RssItem> listItems;
@@ -22,7 +19,7 @@ public class ListListener implements OnItemClickListener{
 		activity = anActivity;
 	}
 	
-	public void onItemClick(AdapterView parent, View view, int pos, long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 		
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		RssItem rss = (RssItem) parent.getAdapter().getItem(pos);

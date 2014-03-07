@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.EditText;
@@ -88,7 +90,7 @@ public class ListActivity extends Activity{
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-            	if(ListActivity.this.adapter != null && !ListActivity.this.adapter.isEmpty()) {
+            	if(ListActivity.this.adapter != null) {
 	            	if(cs != null) {
 	            		ListActivity.this.adapter.getFilter().filter(cs);          
 	            	}	
@@ -129,8 +131,32 @@ public class ListActivity extends Activity{
 			if(result != null && !result.isEmpty()) {
 				ListView gcItems = (ListView) findViewById(R.id.gcListView);
 				adapter = new LazyAdapter(local, result);
+				//add the footer before adding the adapter, else the footer will not load!
+				//View footerView = ((LayoutInflater) local.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer, null, false);
+				//gcItems.addFooterView(footerView);
 				gcItems.setAdapter(adapter);
 				gcItems.setOnItemClickListener(new ListListener(result, listactivity));
+				
+//				gcItems.setOnScrollListener(new OnScrollListener() {
+//					
+//					@Override
+//					public void onScrollStateChanged(AbsListView view, int scrollState) {
+//						// TODO Auto-generated method stub
+//						
+//					}
+//					
+//					@Override
+//					public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//						int lastInScreen = firstVisibleItem + visibleItemCount;
+//						
+//						if((lastInScreen == totalItemCount) && !(loadingMore)) {
+//							Thread thread = new Thread(null, loadMoreListItems);
+//							thread.start();
+//						}
+//						
+//					}
+//				});
+//				
 			}else {
 				
 				Toast.makeText(local, "Could not retrieve items.", Toast.LENGTH_LONG).show();

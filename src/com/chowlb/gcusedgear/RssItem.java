@@ -32,20 +32,8 @@ public class RssItem {
 	public String toString() {
 		return description;
 	}
-	public Bitmap getImage() {
-		Bitmap scaled = null;
-		try{
-			URL url = new URL(this.image.toString());
-			BitmapScaler scaler = new BitmapScaler(url, 45);
-			Log.e("chowlb", "return from bitmap scaler success");
-			scaled = scaler.getScaled();
-			return scaled;
-		}catch(MalformedURLException err) {
-			Log.e("chowlb", err.getMessage());
-		}catch(IOException err) {
-			Log.e("chowlb", err.getMessage());
-		}
-		return scaled;
+	public String getImage() {
+		return this.image;
 	}
 	public void setImage(String image) {
 		this.guid = Integer.parseInt(image);
