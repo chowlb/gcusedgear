@@ -235,34 +235,36 @@ containing a value of this type.
         public static final int no_img_xhdpi=0x7f020026;
     }
     public static final class id {
-        public static final int Amps=0x7f05000d;
-        public static final int DJ=0x7f050010;
-        public static final int Keyboards=0x7f05000e;
-        public static final int LiveSound=0x7f05000c;
-        public static final int Recording=0x7f05000f;
-        public static final int RelativeLayoutList=0x7f050014;
+        public static final int Amps=0x7f05000e;
+        public static final int DJ=0x7f050011;
+        public static final int Keyboards=0x7f05000f;
+        public static final int LiveSound=0x7f05000d;
+        public static final int Recording=0x7f050010;
+        public static final int RelativeLayoutList=0x7f050015;
         public static final int RelativeLayoutMain=0x7f050005;
-        public static final int Strings=0x7f050013;
-        public static final int Wind=0x7f050012;
-        public static final int accessories=0x7f050011;
-        public static final int action_settings=0x7f05001b;
-        public static final int bass=0x7f05000a;
-        public static final int drums=0x7f05000b;
+        public static final int Strings=0x7f050014;
+        public static final int Wind=0x7f050013;
+        public static final int accessories=0x7f050012;
+        public static final int action_settings=0x7f05001d;
+        public static final int adMainLayout=0x7f050008;
+        public static final int adMainLayoutList=0x7f050018;
+        public static final int all=0x7f050009;
+        public static final int bass=0x7f05000b;
+        public static final int drums=0x7f05000c;
         public static final int gcListView=0x7f050017;
-        public static final int guitar=0x7f050009;
+        public static final int guitar=0x7f05000a;
         public static final int hybrid=0x7f050004;
         public static final int inputSearch=0x7f050016;
-        public static final int itemTitle=0x7f05001a;
-        public static final int listLinearLayout=0x7f050015;
-        public static final int listTextView=0x7f050018;
-        public static final int list_image=0x7f050019;
-        public static final int mainLinearLayout=0x7f050006;
+        public static final int itemTitle=0x7f05001c;
+        public static final int listLinearLayout=0x7f05001a;
+        public static final int listTextView=0x7f050019;
+        public static final int list_image=0x7f05001b;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
-        public static final int scrollView1=0x7f050008;
+        public static final int scrollView1=0x7f050007;
         public static final int terrain=0x7f050003;
-        public static final int usedGearText=0x7f050007;
+        public static final int usedGearText=0x7f050006;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
@@ -281,6 +283,7 @@ containing a value of this type.
     public static final class string {
         public static final int acc=0x7f060026;
         public static final int action_settings=0x7f06001b;
+        public static final int all=0x7f06002c;
         public static final int amps=0x7f060022;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be

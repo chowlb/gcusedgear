@@ -1,18 +1,16 @@
 package com.chowlb.gcusedgear;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -30,7 +28,8 @@ public class ListActivity extends Activity{
 	private AdView adView;
 	EditText inputSearch;
 	LazyAdapter adapter;
-
+	private ProgressDialog mProgressDialog;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,10 +38,8 @@ public class ListActivity extends Activity{
 		adView.setAdUnitId("ca-app-pub-8858215261311943/5955890318");
 		adView.setAdSize(AdSize.BANNER);
 		 
-		RelativeLayout layout = (RelativeLayout)findViewById(R.id.RelativeLayoutList);
-		RelativeLayout.LayoutParams rLParam = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		rLParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-		layout.addView(adView, rLParam);
+		RelativeLayout layout = (RelativeLayout)findViewById(R.id.adMainLayoutList);
+		layout.addView(adView);
 		AdRequest adRequest = new AdRequest.Builder().build();
 		adView.loadAd(adRequest);
 		
@@ -55,35 +52,47 @@ public class ListActivity extends Activity{
 		
 		String urlType = getIntent().getStringExtra("message"); 
 		
-		String url = "";
-		if(urlType.equalsIgnoreCase("guitar")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_37.xml";
-		}else if(urlType.equalsIgnoreCase("bass")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_38.xml";
-		}else if(urlType.equalsIgnoreCase("drums")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_39.xml";
-		}else if(urlType.equalsIgnoreCase("live sound")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_40.xml";
-		}else if(urlType.equalsIgnoreCase("amps")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_41.xml";
-		}else if(urlType.equalsIgnoreCase("keyboards")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_42.xml";
-		}else if(urlType.equalsIgnoreCase("recording")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_43.xml";
-		}else if(urlType.equalsIgnoreCase("dj")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_44.xml";
-		}else if(urlType.equalsIgnoreCase("accessories")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_50.xml";
-		}else if(urlType.equalsIgnoreCase("wind instruments")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_60.xml";
-		}else if(urlType.equalsIgnoreCase("strings")) {
-			url = "http://used.guitarcenter.com/usedGear/usedListings_rss_cat_54.xml";
+		List<String> url = new ArrayList<String>();
+		if(urlType.equalsIgnoreCase("guitar") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_37.xml");
+		}
+		if(urlType.equalsIgnoreCase("bass") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_38.xml");
+		}
+		if(urlType.equalsIgnoreCase("drums") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_39.xml");
+		}
+		if(urlType.equalsIgnoreCase("live sound") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_40.xml");
+		}
+		if(urlType.equalsIgnoreCase("amps") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_41.xml");
+		}
+		if(urlType.equalsIgnoreCase("keyboards") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_42.xml");
+		}
+		if(urlType.equalsIgnoreCase("recording") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_43.xml");
+		}
+		if(urlType.equalsIgnoreCase("dj") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_44.xml");
+		}
+		if(urlType.equalsIgnoreCase("accessories") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_50.xml");
+		}
+		if(urlType.equalsIgnoreCase("wind instruments") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_60.xml");
+		}
+		if(urlType.equalsIgnoreCase("strings") || urlType.equalsIgnoreCase("all")) {
+			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_54.xml");
 		}
 		
 		setTitle("");
 		setTitle(urlType);
-		task.execute(url);
-		
+		if(!url.isEmpty()) {
+			//Log.e("chowlb", "URL LIST IS: " + url.size());
+			task.execute(url);
+		}
 		
 		inputSearch.addTextChangedListener(new TextWatcher() {
             
@@ -100,26 +109,40 @@ public class ListActivity extends Activity{
             @Override
             public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
                     int arg3) {
-                // TODO Auto-generated method stub
                  
             }
              
             @Override
-            public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub                          
+            public void afterTextChanged(Editable arg0) {                      
             }
         });
 		
 		
 	}
 	
-	private class GetRSSDataTask extends AsyncTask<String, Void, List<RssItem>>{
+	public class GetRSSDataTask extends AsyncTask<List<String>, Void, List<RssItem>>{
 
+		
+		
+		 @Override
+	   	protected void onPreExecute() {
+	   		  mProgressDialog = new ProgressDialog(ListActivity.this);
+	 		  mProgressDialog =ProgressDialog.show(ListActivity.this, "", "Loading Items, Please Wait",true,false);
+	 		  super.onPreExecute();
+	   }
+		
 		@Override
-		protected List<RssItem> doInBackground(String... urls) {
+		protected List<RssItem> doInBackground(List<String>... urls) {
 			try {
-				RssReader rssReader = new RssReader(urls[0]);
-				return rssReader.getItems();
+				List<String> urlList = urls[0];
+				List<RssItem> rssList = new ArrayList<RssItem>();
+				for(int i=0; i<urlList.size();i++) {
+					RssReader rssReader = new RssReader(urlList.get(i));
+					rssList.addAll(rssReader.getItems());
+					//Log.e("chowlb", "RSS LIST SIZE: " + rssList.size());
+				}
+				
+				return rssList;
 			}catch(Exception e) {
 				Log.e("chowlb", e.getMessage());
 			}
@@ -131,36 +154,16 @@ public class ListActivity extends Activity{
 			if(result != null && !result.isEmpty()) {
 				ListView gcItems = (ListView) findViewById(R.id.gcListView);
 				adapter = new LazyAdapter(local, result);
-				//add the footer before adding the adapter, else the footer will not load!
-				//View footerView = ((LayoutInflater) local.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer, null, false);
-				//gcItems.addFooterView(footerView);
 				gcItems.setAdapter(adapter);
 				gcItems.setOnItemClickListener(new ListListener(result, listactivity));
-				
-//				gcItems.setOnScrollListener(new OnScrollListener() {
-//					
-//					@Override
-//					public void onScrollStateChanged(AbsListView view, int scrollState) {
-//						// TODO Auto-generated method stub
-//						
-//					}
-//					
-//					@Override
-//					public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//						int lastInScreen = firstVisibleItem + visibleItemCount;
-//						
-//						if((lastInScreen == totalItemCount) && !(loadingMore)) {
-//							Thread thread = new Thread(null, loadMoreListItems);
-//							thread.start();
-//						}
-//						
-//					}
-//				});
-//				
+								
 			}else {
 				
 				Toast.makeText(local, "Could not retrieve items.", Toast.LENGTH_LONG).show();
 			}
+			if (mProgressDialog != null || mProgressDialog.isShowing()){
+		         mProgressDialog.dismiss();
+			 }
 		}
 		
 	}

@@ -9,25 +9,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ListActivity" >
 
-    <LinearLayout
-        android:id="@+id/listLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-    
-	    <EditText android:id="@+id/inputSearch"
+   <EditText android:id="@+id/inputSearch"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:hint="@string/search"
-	        android:inputType="textVisiblePassword"/>
+	        android:inputType="textVisiblePassword"
+	        android:layout_alignParentTop="true"/>
 	
-	    <ListView
+	 <ListView
 	        android:id="@+id/gcListView"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"	
-			android:listSelector="@drawable/list_selector" >
-	    </ListView>
-	    
-    </LinearLayout>
+			android:listSelector="@drawable/list_selector" 
+			android:layout_below="@+id/inputSearch"
+        	android:layout_above="@+id/adMainLayoutList">
+	 </ListView>
+	        
+     <RelativeLayout
+        android:id="@+id/adMainLayoutList"
+        android:layout_width = "match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        ></RelativeLayout>
     
 </RelativeLayout>

@@ -9,12 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
     
-    <LinearLayout
+    <!-- <LinearLayout
         android:id="@+id/mainLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        
+        -->
         <TextView
             android:id="@+id/usedGearText"
             android:layout_width="match_parent"
@@ -22,18 +22,31 @@
             android:layout_gravity="center"
             android:text="@string/usedGearCategory"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/Red" />
+            android:textColor="@color/Red" 
+            android:layout_alignParentTop="true"/>
     
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/usedGearText"
+        android:layout_above="@+id/adMainLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <Button
+                android:id="@+id/all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="loadRss"
+                android:text="@string/all"
+                style="@style/ButtonText"
+                android:background="@drawable/btn_red_matte" 
+                />
+            
             <Button
                 android:id="@+id/guitar"
                 android:layout_width="match_parent"
@@ -140,6 +153,15 @@
 
     </ScrollView>
     
-    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/adMainLayout"
+        android:layout_width = "match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        ></RelativeLayout>
+    
+    <!-- </LinearLayout>-->
 
 </RelativeLayout>

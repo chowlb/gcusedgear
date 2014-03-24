@@ -1,12 +1,10 @@
 package com.chowlb.gcusedgear;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +14,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+@SuppressLint("DefaultLocale")
 public class LazyAdapter extends BaseAdapter implements Filterable {
 
 	private List<RssItem> result;
@@ -82,6 +81,7 @@ public class LazyAdapter extends BaseAdapter implements Filterable {
 	}
 	
 	private class ItemFilter extends Filter {
+		@SuppressLint("DefaultLocale")
 		@Override
 		protected FilterResults performFiltering(CharSequence constraint) {
 			

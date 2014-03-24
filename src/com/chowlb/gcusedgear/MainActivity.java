@@ -31,10 +31,8 @@ public class MainActivity extends Activity {
 		 adView.setAdUnitId("ca-app-pub-8858215261311943/5955890318");
 		 adView.setAdSize(AdSize.BANNER);
 		 
-		 RelativeLayout layout = (RelativeLayout)findViewById(R.id.RelativeLayoutMain);
-		 RelativeLayout.LayoutParams rLParam = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		 rLParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-		 layout.addView(adView, rLParam);
+		 RelativeLayout layout = (RelativeLayout)findViewById(R.id.adMainLayout);
+		 layout.addView(adView);
 		 AdRequest adRequest = new AdRequest.Builder().build();
 		 adView.loadAd(adRequest);
 	}

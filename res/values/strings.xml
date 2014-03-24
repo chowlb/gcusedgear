@@ -19,5 +19,6 @@
     <string name="title_activity_list">Used Gear List</string>
     <string name="search">Filter Listings&#8230;</string>
     <string name="rowContentDescription">Image</string>
+    <string name="all">All</string>
 
 </resources>

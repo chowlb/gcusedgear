@@ -52,7 +52,6 @@ public class RssParseHandler extends DefaultHandler{
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
-		// TODO Auto-generated method stub
 		if(parsingDescription) {
 			if(currentItem != null) {
 				//Log.e("chowlb", "Parsing description");
@@ -75,7 +74,6 @@ public class RssParseHandler extends DefaultHandler{
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
-		// TODO Auto-generated method stub
 		if("item".equals(qName)) {
 			rssItems.add(currentItem);
 			currentItem = null;
