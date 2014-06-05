@@ -36,7 +36,11 @@ public class LazyAdapter extends BaseAdapter implements Filterable {
 	
 	@Override
 	public int getCount() {
-		return filteredData.size();
+		if(filteredData != null) {
+			return filteredData.size();
+		}else {
+			return 0;
+		}
 	}
 
 	@Override
