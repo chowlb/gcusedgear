@@ -281,11 +281,11 @@ containing a value of this type.
         public static final int rss_list=0x7f0a0002;
     }
     public static final class string {
-        public static final int acc=0x7f060026;
-        public static final int action_settings=0x7f06001b;
-        public static final int all=0x7f06002c;
-        public static final int amps=0x7f060022;
-        public static final int app_name=0x7f06001a;
+        public static final int acc=0x7f060027;
+        public static final int action_settings=0x7f06001c;
+        public static final int all=0x7f06002d;
+        public static final int amps=0x7f060023;
+        public static final int app_name=0x7f06001b;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -309,7 +309,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
-        public static final int bass=0x7f06001f;
+        public static final int bass=0x7f060020;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -381,19 +381,22 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int dj=0x7f060025;
-        public static final int drums=0x7f060020;
-        public static final int guitar=0x7f06001e;
-        public static final int keys=0x7f060023;
-        public static final int live=0x7f060021;
-        public static final int rec=0x7f060024;
-        public static final int rowContentDescription=0x7f06002b;
-        public static final int search=0x7f06002a;
-        public static final int strings=0x7f060028;
-        public static final int title_activity_list=0x7f060029;
-        public static final int title_activity_rss_list=0x7f06001c;
-        public static final int usedGearCategory=0x7f06001d;
-        public static final int wind=0x7f060027;
+        public static final int dj=0x7f060026;
+        public static final int drums=0x7f060021;
+        public static final int guitar=0x7f06001f;
+        public static final int keys=0x7f060024;
+        public static final int live=0x7f060022;
+        /**  Location client code resources (prefix with location_client) 
+         */
+        public static final int location_client_powered_by_google=0x7f06001a;
+        public static final int rec=0x7f060025;
+        public static final int rowContentDescription=0x7f06002c;
+        public static final int search=0x7f06002b;
+        public static final int stringsValue=0x7f060029;
+        public static final int title_activity_list=0x7f06002a;
+        public static final int title_activity_rss_list=0x7f06001d;
+        public static final int usedGearCategory=0x7f06001e;
+        public static final int wind=0x7f060028;
     }
     public static final class style {
         /** 

@@ -143,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="loadRss"
-                android:text="@string/strings"
+                android:text="@string/stringsValue"
                 style="@style/ButtonText"
                 android:background="@drawable/btn_red_matte"  />
 

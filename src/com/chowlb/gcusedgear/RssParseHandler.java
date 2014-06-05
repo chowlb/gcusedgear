@@ -9,6 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import android.util.Log;
 
+
 public class RssParseHandler extends DefaultHandler{
 	private List<RssItem> rssItems;
 	private RssItem currentItem;
@@ -20,7 +21,7 @@ public class RssParseHandler extends DefaultHandler{
 	private StringBuffer imageSB;
 	
 	public RssParseHandler() {
-		rssItems = new ArrayList();
+		rssItems = new ArrayList<RssItem>();
 	}
 	
 	public List<RssItem> getItems(){
@@ -76,6 +77,7 @@ public class RssParseHandler extends DefaultHandler{
 			throws SAXException {
 		if("item".equals(qName)) {
 			rssItems.add(currentItem);
+			//Log.e("chowlb", "RSS Item Added: List size:" +rssItems.size());
 			currentItem = null;
 		}else if("description".equals(qName)) {
 			parsingDescription = false;
@@ -86,6 +88,8 @@ public class RssParseHandler extends DefaultHandler{
 			parsingLink = false;
 			if(currentItem!=null) {
 				currentItem.setLink(linkSB.toString());
+				//Log.e("chowlb", "CALLING SET ITEM PRICE");
+				//setItemPrice(currentItem);
 			}
 		}else if("guid".equals(qName)) {
 			parsingImage = false;

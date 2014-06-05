@@ -1,11 +1,5 @@
 package com.chowlb.gcusedgear;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import android.graphics.Bitmap;
-import android.util.Log;
 
 public class RssItem {
 	private String description;

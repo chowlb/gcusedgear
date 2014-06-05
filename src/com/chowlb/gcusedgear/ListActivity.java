@@ -14,7 +14,6 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -52,6 +51,42 @@ public class ListActivity extends Activity{
 		
 		String urlType = getIntent().getStringExtra("message"); 
 		
+		List<String> url = getRssUrlList(urlType);
+		
+		setTitle("");
+		setTitle(urlType);
+		if(!url.isEmpty()) {
+			//Log.e("chowlb", "URL LIST IS: " + url.size());
+			task.execute(url);
+		}
+		
+		inputSearch.addTextChangedListener(new TextWatcher() {
+            
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+            	if(ListActivity.this.adapter != null) {
+	            	if(cs != null) {
+	            		ListActivity.this.adapter.getFilter().filter(cs);          
+	            	}	
+            	}
+            }
+             
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                    int arg3) {
+                 
+            }
+             
+            @Override
+            public void afterTextChanged(Editable arg0) {                      
+            }
+        });
+		
+		
+	}
+
+	private List<String> getRssUrlList(String urlType) {
 		List<String> url = new ArrayList<String>();
 		if(urlType.equalsIgnoreCase("guitar") || urlType.equalsIgnoreCase("all")) {
 			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_37.xml");
@@ -86,38 +121,7 @@ public class ListActivity extends Activity{
 		if(urlType.equalsIgnoreCase("strings") || urlType.equalsIgnoreCase("all")) {
 			url.add("http://used.guitarcenter.com/usedGear/usedListings_rss_cat_54.xml");
 		}
-		
-		setTitle("");
-		setTitle(urlType);
-		if(!url.isEmpty()) {
-			//Log.e("chowlb", "URL LIST IS: " + url.size());
-			task.execute(url);
-		}
-		
-		inputSearch.addTextChangedListener(new TextWatcher() {
-            
-            @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-            	if(ListActivity.this.adapter != null) {
-	            	if(cs != null) {
-	            		ListActivity.this.adapter.getFilter().filter(cs);          
-	            	}	
-            	}
-            }
-             
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                    int arg3) {
-                 
-            }
-             
-            @Override
-            public void afterTextChanged(Editable arg0) {                      
-            }
-        });
-		
-		
+		return url;
 	}
 	
 	public class GetRSSDataTask extends AsyncTask<List<String>, Void, List<RssItem>>{

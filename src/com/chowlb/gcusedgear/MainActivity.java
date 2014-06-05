@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.RelativeLayout.LayoutParams;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -26,6 +25,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		final ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+		if (activeNetwork != null && activeNetwork.isConnected()) {
 		
 		 adView = new AdView(this);
 		 adView.setAdUnitId("ca-app-pub-8858215261311943/5955890318");
@@ -35,6 +37,10 @@ public class MainActivity extends Activity {
 		 layout.addView(adView);
 		 AdRequest adRequest = new AdRequest.Builder().build();
 		 adView.loadAd(adRequest);
+		 
+		}else {
+			Toast.makeText(this, "No Network Access Found. Check Internet Settings" , Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	public void loadRss(View view) {

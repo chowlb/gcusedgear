@@ -10,7 +10,7 @@ import android.graphics.Bitmap;
 
 public class MemoryCache {
 
-		private static final String TAG = "MemoryCache";
+		//private static final String TAG = "MemoryCache";
 		private Map<String, Bitmap> cache = Collections.synchronizedMap(
 				new LinkedHashMap<String, Bitmap>(10,1.5f,true));
 		private long size = 0; //current size
