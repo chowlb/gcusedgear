@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,22 +97,33 @@ public class LazyAdapter extends BaseAdapter implements Filterable {
 			final List<RssItem> list = result;
  
 			int count = list.size();
-			
 			//Log.e("chowlb", "Lis Size in filter: " + count);
 			
 			final ArrayList<RssItem> nlist = new ArrayList<RssItem>(count);
  
 			String filterableString ;
 			
-			for (int i = 0; i < count; i++) {
-				filterableString = list.get(i).getDescription().toString();
-				if (filterableString.toLowerCase().contains(filterString)) {
+			if(!filterString.equals("")) {
+				//Log.e("chowlb", "filter string is not empty");
+				for (int i = 0; i < count; i++) {
+					//Log.e("chowlb", "ID: " + list.get(i).getGuid());
+					
+					filterableString = list.get(i).getDescription().toString();
+					if (filterableString.toLowerCase().contains(filterString)) {
+						//Log.e("chowlb", "Adding item to result list");
+						nlist.add(list.get(i));
+					}
+				}
+			}else {
+				for (int i = 0; i < count; i++) {
 					nlist.add(list.get(i));
 				}
 			}
 			
 			results.values = nlist;
+			
 			results.count = nlist.size();
+			//Log.e("chowlb", "Result Size is: " + results.count);
  
 			return results;
 		}

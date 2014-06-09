@@ -67,6 +67,7 @@ public class ListActivity extends Activity{
                 // When user changed the Text
             	if(ListActivity.this.adapter != null) {
 	            	if(cs != null) {
+	            		//Log.e("chowlb", "CS: " + cs);
 	            		ListActivity.this.adapter.getFilter().filter(cs);          
 	            	}	
             	}

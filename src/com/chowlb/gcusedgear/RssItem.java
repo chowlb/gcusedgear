@@ -2,7 +2,7 @@ package com.chowlb.gcusedgear;
 
 
 public class RssItem {
-	private String description;
+	private String description = "";
 	private String link;
 	private String image;
 	private int guid;

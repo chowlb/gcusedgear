@@ -76,7 +76,9 @@ public class RssParseHandler extends DefaultHandler{
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		if("item".equals(qName)) {
-			rssItems.add(currentItem);
+			if(currentItem.getDescription()!="") {
+				rssItems.add(currentItem);
+			}
 			//Log.e("chowlb", "RSS Item Added: List size:" +rssItems.size());
 			currentItem = null;
 		}else if("description".equals(qName)) {
